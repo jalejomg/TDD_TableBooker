@@ -7,7 +7,7 @@ namespace TableBooker.Processor
     public class TableBookerProcessor
     {
         public ITableBookingRespository _tableBookingRespository { get; }
-        public TableBookerProcessor(ITableBookingRespository tableBookingRespository)
+        public TableBookerProcessor(ITableBookingRespository tableBookingRespository, ITableRepository @object)
         {
             _tableBookingRespository = tableBookingRespository;
         }
