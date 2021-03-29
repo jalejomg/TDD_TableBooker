@@ -8,7 +8,7 @@ namespace TableBooker
         {
         }
 
-        internal void BookTable()
+        internal TableBookingResponse BookTable()
         {
             throw new NotImplementedException();
         }

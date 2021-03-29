@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace TableBooker
 {
@@ -8,10 +9,19 @@ namespace TableBooker
         [Fact]
         public void ReturnTableBookingResponseWithTheSameDataEntered()
         {
+            //Create request model
+            var tableBookingRequest = new TableBookingRequest
+            {
+                FirstName = "Tekus",
+                LastName = "Arkbox",
+                Email = "tekuzeros@tekus.co",
+                ReservationDate = new DateTime(2021, 6, 15)
+            };
+
             var _processor = new TableBookerProcessor();
 
-            //Create method to book a table
-            _processor.BookTable();
+            //Create response model
+            TableBookingResponse result = _processor.BookTable();
         }
     }
 }
