@@ -24,10 +24,13 @@ namespace TableBooker.Processor
 
             var response = Create<TableBookingResponse>(request);
 
-            if (avaliableTables.Count() > 0)
+            if (avaliableTables.FirstOrDefault() is Table table)
             {
-                _tableBookingRespository.Save(Create<TableBooking>(request));
+                var deskBooking = Create<TableBooking>(request);
+                deskBooking.TableId = table.Id;
+                _tableBookingRespository.Save(deskBooking);
                 response.Code = TableBookingResultCode.Success;
+                response.TableBookingId = deskBooking.Id;
             }
             else
             {

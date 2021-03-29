@@ -2,5 +2,6 @@
 {
     public class Table
     {
+        public int Id { get; internal set; }
     }
 }
