@@ -10,7 +10,7 @@ namespace TableBooker.Processor
     {
         private TableBookingRequest _request;
         private readonly TableBookerProcessor _processor;
-        private readonly Mock<ITableBookingRespository> _tableBookerRepositoyMock;
+        private Mock<ITableBookingRespository> _tableBookerRepositoyMock;
 
         public TableBookerProcessorTests()
         {
@@ -21,8 +21,8 @@ namespace TableBooker.Processor
                 Email = "tekuzeros@tekus.co",
                 ReservationDate = new DateTime(2021, 6, 15)
             };
-            _processor = new TableBookerProcessor(_tableBookerRepositoyMock.Object);
             _tableBookerRepositoyMock = new Mock<ITableBookingRespository>();
+            _processor = new TableBookerProcessor(_tableBookerRepositoyMock.Object);           
         }
 
         //1st requiremet: The data entered must be returned
