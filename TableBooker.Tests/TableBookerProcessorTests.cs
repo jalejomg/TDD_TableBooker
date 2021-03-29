@@ -9,8 +9,8 @@ namespace TableBooker
         [Fact]
         public void ReturnTableBookingResponseWithTheSameDataEntered()
         {
-            //Create request model
-            var tableBookingRequest = new TableBookingRequest
+            //Arrange
+            var request = new TableBookingRequest
             {
                 FirstName = "Tekus",
                 LastName = "Arkbox",
@@ -20,8 +20,15 @@ namespace TableBooker
 
             var _processor = new TableBookerProcessor();
 
-            //Create response model
+            //Act
             TableBookingResponse result = _processor.BookTable();
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.Equal(result.FirstName, request.FirstName);
+            Assert.Equal(result.LastName, request.LastName);
+            Assert.Equal(result.Email, request.Email);
+            Assert.Equal(result.ReservationDate, request.ReservationDate);
         }
     }
 }
