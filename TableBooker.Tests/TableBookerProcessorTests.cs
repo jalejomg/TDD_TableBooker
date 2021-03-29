@@ -21,7 +21,7 @@ namespace TableBooker
             var _processor = new TableBookerProcessor();
 
             //Act
-            TableBookingResponse result = _processor.BookTable();
+            TableBookingResponse result = _processor.BookTable(request);
 
             //Assert
             Assert.NotNull(result);
