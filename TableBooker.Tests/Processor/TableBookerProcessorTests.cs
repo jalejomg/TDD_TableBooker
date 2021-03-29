@@ -85,7 +85,7 @@ namespace TableBooker.Processor
             Assert.Equal(savedTableBooking.ReservationDate, _request.ReservationDate);
         }
 
-        //shouldn't save the reservation if there is no any table avaliable
+        //4th requirement: shouldn't save the reservation if there is no any table avaliable
         [Fact]
         public void DoNotSaveTableBookingIfThereIsNotAtLeastOneTableAvaliable()
         {
@@ -94,6 +94,19 @@ namespace TableBooker.Processor
             _processor.BookTable(_request);
 
             _tableBookerRepositoyMock.Verify(repository => repository.Save(It.IsAny<TableBooking>()), Times.Never);
+        }
+
+        //5th requeriment: Return a code depending on the availability of the tables
+        [Theory]
+        [InlineData(DeskBookingResultCode.Success, true)]
+        [InlineData(DeskBookingResultCode.NoTableAvaliable, false)]
+        public void ReturnCodeDeppendingTheTablesAvailability(DeskBookingResultCode expectedResultCode, bool isTableAvaliable)
+        {
+            if (!isTableAvaliable) _avaliableTables.Clear();
+
+            var result = _processor.BookTable(_request);
+
+            Assert.Equal(expectedResultCode, result.Code);
         }
     }
 }
