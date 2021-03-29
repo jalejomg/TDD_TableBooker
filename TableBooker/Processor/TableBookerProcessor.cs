@@ -16,15 +16,14 @@ namespace TableBooker.Processor
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
-            _tableBookingRespository.Save(new TableBooking
-            {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Email = request.Email,
-                ReservationDate = request.ReservationDate
-            });
+            _tableBookingRespository.Save(Create<TableBooking>(request));
 
-            return new TableBookingResponse
+            return Create<TableBookingResponse>(request);
+        }
+
+        private T Create<T>(TableBookingRequest request) where T : TableBookingBase, new()
+        {
+            return new T
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
