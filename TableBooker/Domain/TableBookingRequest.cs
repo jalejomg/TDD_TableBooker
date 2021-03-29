@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TableBooker
+namespace TableBooker.Domain
 {
     public class TableBookingRequest
     {

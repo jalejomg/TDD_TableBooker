@@ -1,6 +1,7 @@
 ﻿using System;
+using TableBooker.Domain;
 
-namespace TableBooker
+namespace TableBooker.Processor
 {
     public class TableBookerProcessor
     {

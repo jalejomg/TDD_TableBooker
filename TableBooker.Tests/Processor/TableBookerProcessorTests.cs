@@ -1,4 +1,5 @@
 ﻿using System;
+using TableBooker.Domain;
 using Xunit;
 
 namespace TableBooker.Processor
