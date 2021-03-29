@@ -10,7 +10,13 @@ namespace TableBooker
 
         internal TableBookingResponse BookTable(TableBookingRequest request)
         {
-            throw new NotImplementedException();
+            return new TableBookingResponse
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Email = request.Email,
+                ReservationDate = request.ReservationDate
+            };
         }
     }
 }
