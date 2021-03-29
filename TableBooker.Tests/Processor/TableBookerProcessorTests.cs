@@ -98,9 +98,9 @@ namespace TableBooker.Processor
 
         //5th requeriment: Return a code depending on the availability of the tables
         [Theory]
-        [InlineData(DeskBookingResultCode.Success, true)]
-        [InlineData(DeskBookingResultCode.NoTableAvaliable, false)]
-        public void ReturnCodeDeppendingTheTablesAvailability(DeskBookingResultCode expectedResultCode, bool isTableAvaliable)
+        [InlineData(TableBookingResultCode.Success, true)]
+        [InlineData(TableBookingResultCode.NoTableAvaliable, false)]
+        public void ReturnCodeDeppendingTheTablesAvailability(TableBookingResultCode expectedResultCode, bool isTableAvaliable)
         {
             if (!isTableAvaliable) _avaliableTables.Clear();
 

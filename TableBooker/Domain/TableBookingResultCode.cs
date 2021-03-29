@@ -1,6 +1,6 @@
 ﻿namespace TableBooker.Domain
 {
-    public enum DeskBookingResultCode
+    public enum TableBookingResultCode
     {
         Success,
         NoTableAvaliable
