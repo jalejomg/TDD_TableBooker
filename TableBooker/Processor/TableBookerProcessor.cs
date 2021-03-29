@@ -9,6 +9,8 @@ namespace TableBooker
         }
         public TableBookingResponse BookTable(TableBookingRequest request)
         {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             return new TableBookingResponse
             {
                 FirstName = request.FirstName,
