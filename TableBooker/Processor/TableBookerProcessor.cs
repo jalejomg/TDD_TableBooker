@@ -2,13 +2,12 @@
 
 namespace TableBooker
 {
-    internal class TableBookerProcessor
+    public class TableBookerProcessor
     {
         public TableBookerProcessor()
         {
         }
-
-        internal TableBookingResponse BookTable(TableBookingRequest request)
+        public TableBookingResponse BookTable(TableBookingRequest request)
         {
             return new TableBookingResponse
             {

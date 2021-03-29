@@ -2,7 +2,7 @@
 
 namespace TableBooker
 {
-    internal class TableBookingResponse
+    public class TableBookingResponse
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
