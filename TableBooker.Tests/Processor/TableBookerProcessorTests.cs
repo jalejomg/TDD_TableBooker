@@ -96,7 +96,7 @@ namespace TableBooker.Processor
             _tableBookerRepositoyMock.Verify(repository => repository.Save(It.IsAny<TableBooking>()), Times.Never);
         }
 
-        //5th requeriment: Return a code depending on the availability of the tables
+        //5th requeriment: Return a code depending on the availability of the tables 
         [Theory]
         [InlineData(TableBookingResultCode.Success, true)]
         [InlineData(TableBookingResultCode.NoTableAvaliable, false)]

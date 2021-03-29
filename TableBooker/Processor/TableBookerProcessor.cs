@@ -27,11 +27,11 @@ namespace TableBooker.Processor
             if (avaliableTables.Count() > 0)
             {
                 _tableBookingRespository.Save(Create<TableBooking>(request));
-                response.Code = DeskBookingResultCode.Success;
+                response.Code = TableBookingResultCode.Success;
             }
             else
             {
-                response.Code = DeskBookingResultCode.NoTableAvaliable;
+                response.Code = TableBookingResultCode.NoTableAvaliable;
             }
 
             return response;
