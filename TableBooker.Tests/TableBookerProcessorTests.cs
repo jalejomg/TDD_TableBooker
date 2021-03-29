@@ -8,8 +8,10 @@ namespace TableBooker
         [Fact]
         public void ReturnTableBookingResponseWithTheSameDataEntered()
         {
-            //Create class to process table reservation requests
             var _processor = new TableBookerProcessor();
+
+            //Create method to book a table
+            _processor.BookTable();
         }
     }
 }
