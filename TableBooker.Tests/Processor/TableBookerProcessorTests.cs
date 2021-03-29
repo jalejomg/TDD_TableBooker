@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace TableBooker
+namespace TableBooker.Processor
 {
     public class TableBookerProcessorTests
     {
@@ -29,6 +29,23 @@ namespace TableBooker
             Assert.Equal(result.LastName, request.LastName);
             Assert.Equal(result.Email, request.Email);
             Assert.Equal(result.ReservationDate, request.ReservationDate);
+        }
+
+        //2nd requirement: Must throws an exception if request is null
+        [Fact]
+        public void ThrowExeptionIfRerquestModelIsNull()
+        {
+            //Arrange
+
+            TableBookingRequest request = null;
+
+            var _processor = new TableBookerProcessor();
+
+            //Act
+            var exception = Assert.Throws<ArgumentNullException>(() => _processor.BookTable(request));
+
+            //Assert
+            Assert.Equal("request", exception.ParamName);
         }
     }
 }
