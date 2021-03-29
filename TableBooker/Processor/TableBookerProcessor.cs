@@ -22,12 +22,19 @@ namespace TableBooker.Processor
 
             var avaliableTables = _tableRepository.GetAvaliableTables(request.ReservationDate);
 
+            var response = Create<TableBookingResponse>(request);
+
             if (avaliableTables.Count() > 0)
             {
                 _tableBookingRespository.Save(Create<TableBooking>(request));
+                response.Code = DeskBookingResultCode.Success;
+            }
+            else
+            {
+                response.Code = DeskBookingResultCode.NoTableAvaliable;
             }
 
-            return Create<TableBookingResponse>(request);
+            return response;
         }
 
         private T Create<T>(TableBookingRequest request) where T : TableBookingBase, new()

@@ -30,7 +30,7 @@ namespace TableBooker.Processor
             _tableRepositoryMock = new Mock<ITableRepository>();
             _tableRepositoryMock.Setup(repository => repository.GetAvaliableTables(_request.ReservationDate))
                 .Returns(_avaliableTables);
-            _processor = new TableBookerProcessor(_tableBookerRepositoyMock.Object, _tableRepositoryMock.Object);           
+            _processor = new TableBookerProcessor(_tableBookerRepositoyMock.Object, _tableRepositoryMock.Object);
         }
 
         //1st requiremet: The data entered must be returned
@@ -107,6 +107,27 @@ namespace TableBooker.Processor
             var result = _processor.BookTable(_request);
 
             Assert.Equal(expectedResultCode, result.Code);
+        }
+
+        //6th requirement: Respons model has to include the Id TableBooking (reservation id)
+        [Theory]
+        [InlineData(5, true)]
+        [InlineData(null, false)]
+        public void ReturnTableBookingIdIFThereIsAnyTableAvaliable(int? expectedTableBookingId, bool isTableAvaliable)
+        {
+            if (!isTableAvaliable) _avaliableTables.Clear();
+            else
+            {
+                _tableBookerRepositoyMock.Setup(repository => repository.Save(It.IsAny<TableBooking>()))
+                    .Callback<TableBooking>(tableBooking =>
+                    {
+                        tableBooking.Id = expectedTableBookingId.Value;
+                    });
+            }
+
+            var result = _processor.BookTable(_request);
+
+            Assert.Equal(expectedTableBookingId, result.TableBookingId);
         }
     }
 }

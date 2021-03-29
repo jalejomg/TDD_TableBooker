@@ -2,5 +2,6 @@
 {
     public class TableBooking : TableBookingBase
     {
+        public int Id { get; set; }
     }
 }
